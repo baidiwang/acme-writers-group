@@ -35,4 +35,6 @@ const { USERS, STORIES } = require("./seed-data");
     catch(e){
         console.warn(`Something went wrong. ${e}`)
     }
-})();
+})
+
+();
