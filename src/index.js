@@ -12,7 +12,20 @@ class App extends Component{
       users: [],
       userId: ''
     };
+    this.destroyUser = this.destroyUser.bind(this);
   }
+
+  //destroy method here
+  destroyUser(user){
+    console.log(user);
+    const users = this.state.users.filter(_user => _user.id !== user.id);
+    this.setState({ users });
+    console.log(users);
+    // if(this.state.userId){
+    //   window.location.hash = '';
+    // }
+  }
+
   async componentDidMount(){
     try {
       const userId = window.location.hash.slice(1);
@@ -31,11 +44,13 @@ class App extends Component{
   }
   render(){
     const { users, userId } = this.state;
+    const { destroyUser } = this;
     return (
       <div>
         <h1>Acme Writers Group ({ users.length })</h1>
         <main>
-          <Users users = { users } userId={ userId }/>
+          <Users users = { users } userId={ userId }
+          destroy = { destroyUser } />
           {
             userId ? <User userId={ userId } /> : null
           }

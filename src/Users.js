@@ -2,10 +2,11 @@ import React from 'react';
 
 
 const Users = ({ users, userId, destroy })=> {
+
   return (
     <ul>
       <li className={ !userId ? 'selected': ''}>
-        <a href='#'>Users</a>
+        <a href='#'>Users<button onclick={() => create}>+</button></a>
       </li>
       {
         users.map( user => {
